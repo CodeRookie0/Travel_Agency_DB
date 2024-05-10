@@ -1,0 +1,10 @@
+USE TRAVEL_AGENCY
+GO
+
+CREATE TABLE tbl_bus (
+    busId INT PRIMARY KEY IDENTITY(1,1),
+    busNo VARCHAR(20) NOT NULL UNIQUE,
+    busModel VARCHAR(50),
+    busColor VARCHAR(20)
+);
+GO

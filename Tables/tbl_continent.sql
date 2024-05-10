@@ -1,0 +1,8 @@
+USE TRAVEL_AGENCY
+GO
+
+CREATE TABLE tbl_continent (
+    contId INT PRIMARY KEY IDENTITY(1,1),
+    contName VARCHAR(25) NOT NULL UNIQUE
+);
+GO

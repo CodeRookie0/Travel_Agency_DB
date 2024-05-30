@@ -72,11 +72,12 @@ MS SQL Server
 
 ## Planned changes:
 This project is **at the development stage** and has not been completed. I am planning to 
-- Add an archive table
+- ~~Add an archive table~~
 - Add system users divided into users, administrator, office employee, etc., assigning appropriate permissions
-- Expanding tables such as tbl_hotel or tbl_package to include hotel availability, different room types, and time available to register for travel. 
+- Expanding tbl_hotel table to include hotel availability, different room types.
+- ~~Expanding tbl_package table to include places available for reservation~~
 - Add additional attractions in the city travel
-- Add additional procedures and functions for greater database functionality
+- ~~Add additional procedures and functions for greater database functionality (automatically "deleting" (archiving) outdated records )~~
 - Create a dekstop application after searching for travel using the presented database
 ## Author:<br>
 Maryia Shyliankova

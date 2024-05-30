@@ -2,6 +2,8 @@
 This query returns table names, column names, default constraint 
 names, and default expressions for columns in the database.
 */
+USE TRAVEL_AGENCY
+GO
 
 SELECT
     OBJECT_NAME(dc.parent_object_id) AS TableName,

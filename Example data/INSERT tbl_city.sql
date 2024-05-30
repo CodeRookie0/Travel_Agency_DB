@@ -1,373 +1,888 @@
-﻿USE TRAVEL_AGENCY
+USE [TRAVEL_AGENCY]
 GO
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tirana', 1);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Durrës', 1);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vlorë', 1);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Shkodër', 1);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Fier', 1);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Andorra la Vella', 2);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vienna', 3);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Graz', 3);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Linz', 3);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Salzburg', 3);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Innsbruck', 3);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Minsk', 4);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Gomel', 4);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mogilev', 4);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vitebsk', 4);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Hrodna', 4);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Brussels', 5);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Antwerp', 5);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ghent', 5);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Charleroi', 5);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Liège', 5);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sarajevo', 6);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Banja Luka', 6);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tuzla', 6);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Zenica', 6);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mostar', 6);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sofia', 7);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Plovdiv', 7);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Varna', 7);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Burgas', 7);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ruse', 7);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Zagreb', 8);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Split', 8);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Rijeka', 8);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Osijek', 8);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Zadar', 8);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nicosia', 9);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Limassol', 9);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Prague', 10), ('Brno', 10), ('Ostrava', 10);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Copenhagen', 11), ('Aarhus', 11), ('Odense', 11);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tallinn', 12), ('Tartu', 12), ('Narva', 12);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Helsinki', 13), ('Tampere', 13), ('Turku', 13);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Paris', 14), ('Marseille', 14), ('Lyon', 14);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Berlin', 15), ('Hamburg', 15), ('Munich', 15);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Athens', 16), ('Thessaloniki', 16), ('Patras', 16);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Budapest', 17), ('Debrecen', 17), ('Szeged', 17);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Reykjavik', 18), ('Kopavogur', 18), ('Hafnarfjordur', 18);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dublin', 19), ('Cork', 19), ('Galway', 19);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Rome', 20), ('Milan', 20), ('Naples', 20);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Pristina', 21), ('Prizren', 21), ('Gjakova', 21);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Riga', 22), ('Daugavpils', 22), ('Liepaja', 22);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vaduz', 23), ('Schellenberg', 23), ('Triesenberg', 23);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vilnius', 24), ('Kaunas', 24), ('Klaipeda', 24);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Luxembourg City', 25), ('Esch-sur-Alzette', 25), ('Dudelange', 25);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Valletta', 26), ('Birkirkara', 26), ('Mosta', 26);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Chisinau', 27), ('Tiraspol', 27), ('Balti', 27);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Monaco', 28), ('Monte Carlo', 28), ('La Condamine', 28);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Podgorica', 29), ('Niksic', 29), ('Herceg Novi', 29);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Amsterdam', 30), ('Rotterdam', 30), ('The Hague', 30);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Skopje', 31), ('Bitola', 31), ('Kumanovo', 31);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Oslo', 32), ('Bergen', 32), ('Trondheim', 32);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Warsaw', 33), ('Krakow', 33), ('Lodz', 33);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lisbon', 34), ('Porto', 34), ('Vila Nova de Gaia', 34);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bucharest', 35), ('Cluj-Napoca', 35), ('Timisoara', 35);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Moscow', 36), ('Saint Petersburg', 36), ('Novosibirsk', 36);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('San Marino', 37), ('Serravalle', 37), ('Borgo Maggiore', 37);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Belgrade', 38), ('Novi Sad', 38), ('Nis', 38);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bratislava', 39), ('Kosice', 39), ('Presov', 39);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ljubljana', 40), ('Maribor', 40), ('Celje', 40);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Madrid', 41), ('Barcelona', 41), ('Valencia', 41);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Stockholm', 42), ('Gothenburg', 42), ('Malmö', 42);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Zurich', 43), ('Geneva', 43), ('Basel', 43);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Istanbul', 44), ('Ankara', 44), ('Izmir', 44);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kyiv', 45), ('Kharkiv', 45), ('Odessa', 45);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('London', 46), ('Manchester', 46), ('Birmingham', 46);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vatican City', 47), ('Prati', 47), ('Borgo', 47);
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kabul', 48);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kandahar', 48);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Yerevan', 49);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Baku', 50);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ganja', 50);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Manama', 51);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dhaka', 52);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Chittagong', 52);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Thimphu', 53);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bandar Seri Begawan', 54);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Phnom Penh', 55);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Siem Reap', 55);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Beijing', 56);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Shanghai', 56);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tbilisi', 58);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('New Delhi', 59);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mumbai', 59);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Jakarta', 60);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Surabaya', 60);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tehran', 61);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mashhad', 61);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Baghdad', 62);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Jerusalem', 63);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tel Aviv', 63);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tokyo', 64);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Osaka', 64);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Amman', 65);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nur-Sultan', 66);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Almaty', 66);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kuwait City', 67);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bishkek', 68);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vientiane', 69);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Beirut', 70);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kuala Lumpur', 71);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('George Town', 71);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Malé', 72);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ulaanbaatar', 73);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Yangon', 74);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kathmandu', 75);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Pyongyang', 76);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Muscat', 77);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Islamabad', 78);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Karachi', 78);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ramallah', 79);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Manila', 80);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cebu City', 80);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Doha', 81);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Riyadh', 82);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Jeddah', 82);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Singapore', 83);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Seoul', 84);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Busan', 84);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Colombo', 85);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Damascus', 86);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Taipei', 87);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dushanbe', 88);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bangkok', 89);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Chiang Mai', 89);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dili', 90);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ashgabat', 92);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Abu Dhabi', 93);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dubai', 93);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tashkent', 94);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Hanoi', 95);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ho Chi Minh City', 95);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sana''a', 96);
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('St. John''s', 97);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nassau', 98);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bridgetown', 99);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Belize City', 100);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ottawa', 101);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Toronto', 101);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('San Jose', 102);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Havana', 103);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Roseau', 104);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Santo Domingo', 105);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('San Salvador', 106);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('St. George''s', 107);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Guatemala City', 108);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port-au-Prince', 109);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tegucigalpa', 110);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kingston', 111);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mexico City', 112);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Managua', 113);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Panama City', 114);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Basseterre', 115);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Castries', 116);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kingstown', 117);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port of Spain', 118);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Washington, D.C.', 119);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('New York City', 119);
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Buenos Aires', 120);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('La Paz', 121);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sucre', 121);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Santa Cruz de la Sierra', 121);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Brasília', 122);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Rio de Janeiro', 122);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('São Paulo', 122);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Santiago', 123);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Valparaíso', 123);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Concepción', 123);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bogotá', 124);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Medellín', 124);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cali', 124);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Quito', 125);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Guayaquil', 125);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cuenca', 125);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Georgetown', 126);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Asunción', 127);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ciudad del Este', 127);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Encarnación', 127);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lima', 128);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Arequipa', 128);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cusco', 128);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Paramaribo', 129);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Montevideo', 130);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Caracas', 131);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Maracaibo', 131);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Valencia', 131);
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Algiers', 132);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Luanda', 133);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Huambo', 133);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lobito', 133);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Porto-Novo', 134);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cotonou', 134);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Parakou', 134);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Gaborone', 135);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Francistown', 135);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Molepolole', 135);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ouagadougou', 136);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bobo-Dioulasso', 136);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Koudougou', 136);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bujumbura', 137);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Praia', 138);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mindelo', 138);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Santa Maria', 138);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Yaoundé', 139);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Douala', 139);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bamenda', 139);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bangui', 140);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bimbo', 140);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Berbérati', 140);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('N''Djamena', 141);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Moundou', 141);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sarh', 141);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Moroni', 142);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Brazzaville', 143);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Pointe-Noire', 143);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dolisie', 143);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kinshasa', 144);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lubumbashi', 144);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mbuji-Mayi', 144);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Djibouti City', 145);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cairo', 146);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Alexandria', 146);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Giza', 146);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Malabo', 147);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bata', 147);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ebebiyin', 147);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Asmara', 148);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Keren', 148);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Massawa', 148);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mbabane', 149);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Manzini', 149);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Addis Ababa', 150);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dire Dawa', 150);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mekelle', 150);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Libreville', 151);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port-Gentil', 151);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Franceville', 151);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Banjul', 152);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Serekunda', 152);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Accra', 153);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kumasi', 153);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tamale', 153);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Conakry', 154);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nzérékoré', 154);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kankan', 154);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bissau', 155);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Abidjan', 156);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bouaké', 156);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Yamoussoukro', 156);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nairobi', 157);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mombasa', 157);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kisumu', 157);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Maseru', 158);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Monrovia', 159);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tripoli', 160);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Benghazi', 160);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Misrata', 160);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Antananarivo', 161);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Toamasina', 161);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Antsirabe', 161);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lilongwe', 162);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Blantyre', 162);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mzuzu', 162);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bamako', 163);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sikasso', 163);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mopti', 163);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nouakchott', 164);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nouadhibou', 164);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port Louis', 165);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Rabat', 166);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Casablanca', 166);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Fes', 166);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Maputo', 167);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Beira', 167);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nampula', 167);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Windhoek', 168);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Walvis Bay', 168);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Niamey', 169);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Zinder', 169);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tahoua', 169);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lagos', 170);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kano', 170);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ibadan', 170);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kigali', 171);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('São Tomé', 172);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dakar', 173);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Thiès', 173);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kaolack', 173);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Victoria', 174);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Freetown', 175);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mogadishu', 176);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Hargeisa', 176);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bosaso', 176);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Johannesburg', 177);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Cape Town', 177);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Durban', 177);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Juba', 178);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Khartoum', 179);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Omdurman', 179);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port Sudan', 179);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dar es Salaam', 180);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Dodoma', 180);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mwanza', 180);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lomé', 181);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sokodé', 181);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kara', 181);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Tunis', 182);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sfax', 182);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sousse', 182);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kampala', 183);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Gulu', 183);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lira', 183);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lusaka', 184);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kitwe', 184);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ndola', 184);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Harare', 185);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bulawayo', 185);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Chitungwiza', 185);
-
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Sydney', 186);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Melbourne', 186);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Brisbane', 186);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Suva', 187);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nadi', 187);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lautoka', 187);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('South Tarawa', 188);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Betio', 188);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Bairiki', 188);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Majuro', 189);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ebeye', 189);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Arno', 189);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Palikir', 190);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Weno', 190);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Kolonia', 190);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Yaren', 191);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Auckland', 192);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Wellington', 192);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Christchurch', 192);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Ngerulmud', 193);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Koror', 193);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port Moresby', 194);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Lae', 194);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Mount Hagen', 194);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Apia', 195);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vaitele', 195);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Faleolo', 195);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Honiara', 196);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Gizo', 196);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Auki', 196);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Nukuʻalofa', 197);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Vaini', 197);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Haveluloto', 197);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Funafuti', 198);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Fongafale', 198);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Port Vila', 199);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Luganville', 199);
-INSERT INTO tbl_city (cityName, ctryId) VALUES ('Norsup', 199);
+SET IDENTITY_INSERT [dbo].[tbl_city] ON 
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (1, N'Tirana', 1)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (2, N'Durrës', 1)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (3, N'Vlorë', 1)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (4, N'Shkodër', 1)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (5, N'Fier', 1)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (6, N'Andorra la Vella', 2)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (7, N'Vienna', 3)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (8, N'Graz', 3)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (9, N'Linz', 3)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (10, N'Salzburg', 3)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (11, N'Innsbruck', 3)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (12, N'Minsk', 4)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (13, N'Gomel', 4)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (14, N'Mogilev', 4)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (15, N'Vitebsk', 4)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (16, N'Hrodna', 4)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (17, N'Brussels', 5)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (18, N'Antwerp', 5)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (19, N'Ghent', 5)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (20, N'Charleroi', 5)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (21, N'Liege', 5)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (22, N'Sarajevo', 6)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (23, N'Banja Luka', 6)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (24, N'Tuzla', 6)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (25, N'Zenica', 6)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (26, N'Mostar', 6)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (27, N'Sofia', 7)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (28, N'Plovdiv', 7)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (29, N'Varna', 7)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (30, N'Burgas', 7)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (31, N'Ruse', 7)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (32, N'Zagreb', 8)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (33, N'Split', 8)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (34, N'Rijeka', 8)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (35, N'Osijek', 8)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (36, N'Zadar', 8)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (37, N'Nicosia', 9)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (38, N'Limassol', 9)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (39, N'Prague', 10)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (40, N'Brno', 10)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (41, N'Ostrava', 10)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (42, N'Copenhagen', 11)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (43, N'Aarhus', 11)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (44, N'Odense', 11)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (45, N'Tallinn', 12)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (46, N'Tartu', 12)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (47, N'Narva', 12)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (48, N'Helsinki', 13)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (49, N'Tampere', 13)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (50, N'Turku', 13)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (51, N'Paris', 14)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (52, N'Marseille', 14)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (53, N'Lyon', 14)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (54, N'Berlin', 15)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (55, N'Hamburg', 15)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (56, N'Munich', 15)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (57, N'Athens', 16)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (58, N'Thessaloniki', 16)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (59, N'Patras', 16)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (60, N'Budapest', 17)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (61, N'Debrecen', 17)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (62, N'Szeged', 17)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (63, N'Reykjavik', 18)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (64, N'Kopavogur', 18)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (65, N'Hafnarfjordur', 18)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (66, N'Dublin', 19)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (67, N'Cork', 19)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (68, N'Galway', 19)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (69, N'Rome', 20)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (70, N'Milan', 20)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (71, N'Naples', 20)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (72, N'Pristina', 21)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (73, N'Prizren', 21)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (74, N'Gjakova', 21)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (75, N'Riga', 22)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (76, N'Daugavpils', 22)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (77, N'Liepaja', 22)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (78, N'Vaduz', 23)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (79, N'Schellenberg', 23)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (80, N'Triesenberg', 23)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (81, N'Vilnius', 24)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (82, N'Kaunas', 24)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (83, N'Klaipeda', 24)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (84, N'Luxembourg City', 25)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (85, N'Esch-sur-Alzette', 25)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (86, N'Dudelange', 25)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (87, N'Valletta', 26)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (88, N'Birkirkara', 26)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (89, N'Mosta', 26)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (90, N'Chisinau', 27)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (91, N'Tiraspol', 27)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (92, N'Balti', 27)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (93, N'Monaco', 28)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (94, N'Monte Carlo', 28)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (95, N'La Condamine', 28)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (96, N'Podgorica', 29)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (97, N'Niksic', 29)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (98, N'Herceg Novi', 29)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (99, N'Amsterdam', 30)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (100, N'Rotterdam', 30)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (101, N'The Hague', 30)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (102, N'Skopje', 31)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (103, N'Bitola', 31)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (104, N'Kumanovo', 31)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (105, N'Oslo', 32)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (106, N'Bergen', 32)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (107, N'Trondheim', 32)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (108, N'Warsaw', 33)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (109, N'Krakow', 33)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (110, N'Lodz', 33)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (111, N'Lisbon', 34)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (112, N'Porto', 34)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (113, N'Vila Nova de Gaia', 34)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (114, N'Bucharest', 35)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (115, N'Cluj-Napoca', 35)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (116, N'Timisoara', 35)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (117, N'Moscow', 36)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (118, N'Saint Petersburg', 36)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (119, N'Novosibirsk', 36)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (120, N'San Marino', 37)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (121, N'Serravalle', 37)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (122, N'Borgo Maggiore', 37)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (123, N'Belgrade', 38)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (124, N'Novi Sad', 38)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (125, N'Nis', 38)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (126, N'Bratislava', 39)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (127, N'Kosice', 39)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (128, N'Presov', 39)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (129, N'Ljubljana', 40)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (130, N'Maribor', 40)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (131, N'Celje', 40)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (132, N'Madrid', 41)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (133, N'Barcelona', 41)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (134, N'Valencia', 41)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (135, N'Stockholm', 42)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (136, N'Gothenburg', 42)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (137, N'Malmö', 42)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (138, N'Zurich', 43)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (139, N'Geneva', 43)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (140, N'Basel', 43)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (141, N'Istanbul', 44)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (142, N'Ankara', 44)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (143, N'Izmir', 44)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (144, N'Kyiv', 45)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (145, N'Kharkiv', 45)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (146, N'Odessa', 45)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (147, N'London', 46)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (148, N'Manchester', 46)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (149, N'Birmingham', 46)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (150, N'Vatican City', 47)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (151, N'Prati', 47)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (152, N'Borgo', 47)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (153, N'Kabul', 48)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (154, N'Kandahar', 48)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (155, N'Yerevan', 49)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (156, N'Baku', 50)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (157, N'Ganja', 50)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (158, N'Manama', 51)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (159, N'Dhaka', 52)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (160, N'Chittagong', 52)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (161, N'Thimphu', 53)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (162, N'Bandar Seri Begawan', 54)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (163, N'Phnom Penh', 55)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (164, N'Siem Reap', 55)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (165, N'Beijing', 56)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (166, N'Shanghai', 56)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (167, N'Tbilisi', 58)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (168, N'New Delhi', 59)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (169, N'Mumbai', 59)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (170, N'Jakarta', 60)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (171, N'Surabaya', 60)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (172, N'Tehran', 61)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (173, N'Mashhad', 61)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (174, N'Baghdad', 62)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (175, N'Jerusalem', 63)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (176, N'Tel Aviv', 63)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (177, N'Tokyo', 64)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (178, N'Osaka', 64)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (179, N'Amman', 65)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (180, N'Nur-Sultan', 66)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (181, N'Almaty', 66)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (182, N'Kuwait City', 67)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (183, N'Bishkek', 68)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (184, N'Vientiane', 69)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (185, N'Beirut', 70)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (186, N'Kuala Lumpur', 71)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (187, N'George Town', 71)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (188, N'Malé', 72)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (189, N'Ulaanbaatar', 73)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (190, N'Yangon', 74)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (191, N'Kathmandu', 75)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (192, N'Pyongyang', 76)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (193, N'Muscat', 77)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (194, N'Islamabad', 78)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (195, N'Karachi', 78)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (196, N'Ramallah', 79)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (197, N'Manila', 80)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (198, N'Cebu City', 80)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (199, N'Doha', 81)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (200, N'Riyadh', 82)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (201, N'Jeddah', 82)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (202, N'Singapore', 83)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (203, N'Seoul', 84)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (204, N'Busan', 84)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (205, N'Colombo', 85)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (206, N'Damascus', 86)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (207, N'Taipei', 87)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (208, N'Dushanbe', 88)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (209, N'Bangkok', 89)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (210, N'Chiang Mai', 89)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (211, N'Dili', 90)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (212, N'Ashgabat', 92)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (213, N'Abu Dhabi', 93)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (214, N'Dubai', 93)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (215, N'Tashkent', 94)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (216, N'Hanoi', 95)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (217, N'Ho Chi Minh City', 95)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (218, N'Sana''a', 96)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (219, N'St. John''s', 97)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (220, N'Nassau', 98)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (221, N'Bridgetown', 99)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (222, N'Belize City', 100)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (223, N'Ottawa', 101)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (224, N'Toronto', 101)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (225, N'San Jose', 102)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (226, N'Havana', 103)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (227, N'Roseau', 104)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (228, N'Santo Domingo', 105)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (229, N'San Salvador', 106)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (230, N'St. George''s', 107)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (231, N'Guatemala City', 108)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (232, N'Port-au-Prince', 109)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (233, N'Tegucigalpa', 110)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (234, N'Kingston', 111)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (235, N'Mexico City', 112)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (236, N'Managua', 113)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (237, N'Panama City', 114)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (238, N'Basseterre', 115)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (239, N'Castries', 116)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (240, N'Kingstown', 117)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (241, N'Port of Spain', 118)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (242, N'Washington, D.C.', 119)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (243, N'New York City', 119)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (244, N'Buenos Aires', 120)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (245, N'La Paz', 121)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (246, N'Sucre', 121)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (247, N'Santa Cruz de la Sierra', 121)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (248, N'Brasília', 122)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (249, N'Rio de Janeiro', 122)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (250, N'Sao Paulo', 122)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (251, N'Santiago', 123)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (252, N'Valparaíso', 123)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (253, N'Concepción', 123)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (254, N'Bogotá', 124)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (255, N'Medellín', 124)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (256, N'Cali', 124)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (257, N'Quito', 125)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (258, N'Guayaquil', 125)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (259, N'Cuenca', 125)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (260, N'Georgetown', 126)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (261, N'Asunción', 127)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (262, N'Ciudad del Este', 127)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (263, N'Encarnación', 127)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (264, N'Lima', 128)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (265, N'Arequipa', 128)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (266, N'Cusco', 128)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (267, N'Paramaribo', 129)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (268, N'Montevideo', 130)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (269, N'Caracas', 131)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (270, N'Maracaibo', 131)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (271, N'Valencia', 131)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (272, N'Algiers', 132)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (273, N'Luanda', 133)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (274, N'Huambo', 133)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (275, N'Lobito', 133)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (276, N'Porto-Novo', 134)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (277, N'Cotonou', 134)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (278, N'Parakou', 134)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (279, N'Gaborone', 135)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (280, N'Francistown', 135)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (281, N'Molepolole', 135)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (282, N'Ouagadougou', 136)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (283, N'Bobo-Dioulasso', 136)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (284, N'Koudougou', 136)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (285, N'Bujumbura', 137)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (286, N'Praia', 138)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (287, N'Mindelo', 138)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (288, N'Santa Maria', 138)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (289, N'Yaoundé', 139)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (290, N'Douala', 139)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (291, N'Bamenda', 139)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (292, N'Bangui', 140)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (293, N'Bimbo', 140)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (294, N'Berbérati', 140)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (295, N'N''Djamena', 141)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (296, N'Moundou', 141)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (297, N'Sarh', 141)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (298, N'Moroni', 142)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (299, N'Brazzaville', 143)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (300, N'Pointe-Noire', 143)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (301, N'Dolisie', 143)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (302, N'Kinshasa', 144)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (303, N'Lubumbashi', 144)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (304, N'Mbuji-Mayi', 144)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (305, N'Djibouti City', 145)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (306, N'Cairo', 146)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (307, N'Alexandria', 146)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (308, N'Giza', 146)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (309, N'Malabo', 147)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (310, N'Bata', 147)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (311, N'Ebebiyin', 147)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (312, N'Asmara', 148)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (313, N'Keren', 148)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (314, N'Massawa', 148)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (315, N'Mbabane', 149)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (316, N'Manzini', 149)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (317, N'Addis Ababa', 150)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (318, N'Dire Dawa', 150)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (319, N'Mekelle', 150)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (320, N'Libreville', 151)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (321, N'Port-Gentil', 151)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (322, N'Franceville', 151)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (323, N'Banjul', 152)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (324, N'Serekunda', 152)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (325, N'Accra', 153)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (326, N'Kumasi', 153)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (327, N'Tamale', 153)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (328, N'Conakry', 154)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (329, N'Nzérékoré', 154)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (330, N'Kankan', 154)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (331, N'Bissau', 155)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (332, N'Abidjan', 156)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (333, N'Bouaké', 156)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (334, N'Yamoussoukro', 156)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (335, N'Nairobi', 157)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (336, N'Mombasa', 157)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (337, N'Kisumu', 157)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (338, N'Maseru', 158)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (339, N'Monrovia', 159)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (340, N'Tripoli', 160)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (341, N'Benghazi', 160)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (342, N'Misrata', 160)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (343, N'Antananarivo', 161)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (344, N'Toamasina', 161)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (345, N'Antsirabe', 161)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (346, N'Lilongwe', 162)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (347, N'Blantyre', 162)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (348, N'Mzuzu', 162)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (349, N'Bamako', 163)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (350, N'Sikasso', 163)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (351, N'Mopti', 163)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (352, N'Nouakchott', 164)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (353, N'Nouadhibou', 164)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (354, N'Port Louis', 165)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (355, N'Rabat', 166)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (356, N'Casablanca', 166)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (357, N'Fes', 166)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (358, N'Maputo', 167)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (359, N'Beira', 167)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (360, N'Nampula', 167)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (361, N'Windhoek', 168)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (362, N'Walvis Bay', 168)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (363, N'Niamey', 169)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (364, N'Zinder', 169)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (365, N'Tahoua', 169)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (366, N'Lagos', 170)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (367, N'Kano', 170)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (368, N'Ibadan', 170)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (369, N'Kigali', 171)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (370, N'Sao Tomé', 172)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (371, N'Dakar', 173)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (372, N'Thies', 173)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (373, N'Kaolack', 173)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (374, N'Victoria', 174)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (375, N'Freetown', 175)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (376, N'Mogadishu', 176)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (377, N'Hargeisa', 176)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (378, N'Bosaso', 176)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (379, N'Johannesburg', 177)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (380, N'Cape Town', 177)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (381, N'Durban', 177)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (382, N'Juba', 178)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (383, N'Khartoum', 179)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (384, N'Omdurman', 179)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (385, N'Port Sudan', 179)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (386, N'Dar es Salaam', 180)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (387, N'Dodoma', 180)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (388, N'Mwanza', 180)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (389, N'Lomé', 181)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (390, N'Sokodé', 181)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (391, N'Kara', 181)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (392, N'Tunis', 182)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (393, N'Sfax', 182)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (394, N'Sousse', 182)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (395, N'Kampala', 183)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (396, N'Gulu', 183)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (397, N'Lira', 183)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (398, N'Lusaka', 184)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (399, N'Kitwe', 184)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (400, N'Ndola', 184)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (401, N'Harare', 185)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (402, N'Bulawayo', 185)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (403, N'Chitungwiza', 185)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (404, N'Sydney', 186)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (405, N'Melbourne', 186)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (406, N'Brisbane', 186)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (407, N'Suva', 187)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (408, N'Nadi', 187)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (409, N'Lautoka', 187)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (410, N'South Tarawa', 188)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (411, N'Betio', 188)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (412, N'Bairiki', 188)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (413, N'Majuro', 189)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (414, N'Ebeye', 189)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (415, N'Arno', 189)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (416, N'Palikir', 190)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (417, N'Weno', 190)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (418, N'Kolonia', 190)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (419, N'Yaren', 191)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (420, N'Auckland', 192)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (421, N'Wellington', 192)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (422, N'Christchurch', 192)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (423, N'Ngerulmud', 193)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (424, N'Koror', 193)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (425, N'Port Moresby', 194)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (426, N'Lae', 194)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (427, N'Mount Hagen', 194)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (428, N'Apia', 195)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (429, N'Vaitele', 195)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (430, N'Faleolo', 195)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (431, N'Honiara', 196)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (432, N'Gizo', 196)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (433, N'Auki', 196)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (434, N'Nuku‘alofa', 197)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (435, N'Vaini', 197)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (436, N'Haveluloto', 197)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (437, N'Funafuti', 198)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (438, N'Fongafale', 198)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (439, N'Port Vila', 199)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (440, N'Luganville', 199)
+GO
+INSERT [dbo].[tbl_city] ([cityId], [cityName], [ctryId]) VALUES (441, N'Norsup', 199)
+GO
+SET IDENTITY_INSERT [dbo].[tbl_city] OFF
+GO

@@ -9,8 +9,8 @@
 -- AFTER INSERT, UPDATE, DELETE
 --
 -- Result of the action:
--- Audits the changes made to flight records, printing the action performed (INSERT, UPDATE, DELETE) 
--- and the affected flight details.
+-- Audits the changes made to flight records, adding records to the tbl_flight_archive table with an indication of the action performed (INSERT, UPDATE, DELETE) 
+-- and including the affected flight details.
 ---------------------------------------------------------------
 
 USE TRAVEL_AGENCY
@@ -23,48 +23,50 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @Action NVARCHAR(10);
+    DECLARE @Action CHAR(1);
 
     IF EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'UPDATE';
+        SET @Action = 'U';
     END
     ELSE IF EXISTS (SELECT * FROM inserted)
     BEGIN
-        SET @Action = 'INSERT';
+        SET @Action = 'I';
     END
     ELSE IF EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'DELETE';
+        SET @Action = 'D';
     END
 
-    PRINT 'Action: ' + @Action;
-
-    IF @Action IN ('INSERT', 'UPDATE')
+    IF @Action IN ('I', 'U')
     BEGIN
-        DECLARE @fliStartCityId INT;
-        DECLARE @fliEndCityId INT;
-        DECLARE @fliStartTime DATETIME;
-        DECLARE @fliEndTime DATETIME;
-        DECLARE @fliClass VARCHAR(10);
-        DECLARE @fliPrice DECIMAL(10, 2);
+        INSERT INTO tbl_flight_archive (archiveAction, fliId, fliStartCityId, fliEndCityId, fliStartTime, fliEndTime, fliClass, fliPrice, archivedAt)
+        SELECT 
+            @Action,
+            fliId,
+            fliStartCityId,
+            fliEndCityId,
+            fliStartTime,
+            fliEndTime,
+            fliClass,
+            fliPrice,
+            GETDATE()
+        FROM inserted;
+    END
 
-        SELECT @fliStartCityId = fliStartCityId,
-               @fliEndCityId = fliEndCityId,
-               @fliStartTime = fliStartTime,
-               @fliEndTime = fliEndTime,
-               @fliClass = fliClass,
-               @fliPrice = fliPrice
-        FROM inserted i;
-
-        PRINT '';
-        PRINT '--------FLIGHT--------';
-        PRINT 'fliStartCityId : ' + ISNULL(CONVERT(VARCHAR(10), @fliStartCityId), '');
-        PRINT 'fliEndCityId : ' + ISNULL(CONVERT(VARCHAR(10), @fliEndCityId), '');
-        PRINT 'fliStartTime : ' + ISNULL(CONVERT(VARCHAR(30), @fliStartTime, 120), '');
-        PRINT 'fliEndTime : ' + ISNULL(CONVERT(VARCHAR(30), @fliEndTime, 120), '');
-        PRINT 'fliClass : ' + ISNULL(@fliClass, '');
-        PRINT 'fliPrice : ' + ISNULL(CONVERT(VARCHAR(20), @fliPrice), '');
-        PRINT '';
+    IF @Action = 'D'
+    BEGIN
+        INSERT INTO tbl_flight_archive (archiveAction, fliId, fliStartCityId, fliEndCityId, fliStartTime, fliEndTime, fliClass, fliPrice, archivedAt)
+        SELECT 
+            @Action,
+            fliId,
+            fliStartCityId,
+            fliEndCityId,
+            fliStartTime,
+            fliEndTime,
+            fliClass,
+            fliPrice,
+            GETDATE()
+        FROM deleted;
     END
 END;

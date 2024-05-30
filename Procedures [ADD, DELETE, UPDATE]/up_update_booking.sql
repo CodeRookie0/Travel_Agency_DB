@@ -53,12 +53,26 @@ BEGIN
 	SELECT @bookPackageId = COALESCE(@bookPackageId, bookPackageId) FROM tbl_booking WHERE bookId = @bookId;
     SELECT @bookDiscountPercent = COALESCE(@bookDiscountPercent, bookDiscountPercent) FROM tbl_booking WHERE bookId = @bookId;
 
+	DECLARE @packPrice DECIMAL(10, 2)
+    DECLARE @bookDiscountAmnt DECIMAL(10, 2)
+    DECLARE @bookPrice DECIMAL(10, 2)
+
+    SELECT @packPrice = packPrice
+    FROM tbl_package
+    WHERE packId = @bookPackageId;
+
+    SET @bookDiscountAmnt = @packPrice * @bookDiscountPercent;
+
+    SET @bookPrice = @packPrice - @bookDiscountAmnt;
+
     UPDATE tbl_booking
     SET 
         bookCustId = COALESCE(@bookCustId, bookCustId),
         bookPackageId = @bookPackageId,
-        bookDiscountPercent = @bookDiscountPercent
-    WHERE bookId = @bookId;
+        bookDiscountPercent = @bookDiscountPercent,
+		bookDiscountAmnt = @bookDiscountAmnt,
+		bookPrice = COALESCE(@bookPrice,bookPrice)
+    WHERE bookId = COALESCE(@bookId,bookId);
 
 	PRINT 'Booking data has been successfully modified.'
 END;

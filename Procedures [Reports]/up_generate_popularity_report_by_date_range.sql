@@ -33,17 +33,25 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT 
-        p.packId,
-        p.packTitle,
-        COUNT(b.bookId) AS TotalBookings
+        packId,
+        packTitle,
+        COUNT(DISTINCT bookingId) AS TotalBookings
     FROM 
-        tbl_package p
-    LEFT JOIN 
-        tbl_booking b ON p.packId = b.bookPackageId
-    WHERE 
-        b.bookCreatedAt BETWEEN @startDate AND @endDate
+        (
+            SELECT b.bookId AS bookingId, p.packId, p.packTitle
+            FROM tbl_package p
+            LEFT JOIN tbl_booking b ON p.packId = b.bookPackageId
+            WHERE b.bookCreatedAt BETWEEN @startDate AND @endDate
+            
+            UNION ALL
+            
+            SELECT ba.bookId AS bookingId, p.packId, p.packTitle
+            FROM tbl_package p
+            LEFT JOIN tbl_booking_archive ba ON p.packId = ba.bookPackageId
+            WHERE ba.bookCreatedAt BETWEEN @startDate AND @endDate AND ba.wasRealized = 1
+        ) AS CombinedBookings
     GROUP BY 
-        p.packId, p.packTitle
+        packId, packTitle
     ORDER BY 
         TotalBookings DESC;
 END;

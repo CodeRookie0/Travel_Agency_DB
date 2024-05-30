@@ -4,7 +4,7 @@
 --------------------------------------------------------------------------------------------------
 -- This procedure generates a booking report for a specified time range. It retrieves booking details
 -- including customer information, package details, and pricing for bookings created within the given
--- start and end dates.
+-- start and end dates (and were realized, i.e. they were not canceled and the package min capacity was met)
 --
 -- Input Parameters:
 -- @startDate: The start date for the booking report.
@@ -59,5 +59,27 @@ BEGIN
     INNER JOIN 
         tbl_package p ON b.bookPackageId = p.packId
     WHERE 
-         b.bookCreatedAt BETWEEN @startDate AND @endDate;
+         b.bookCreatedAt BETWEEN @startDate AND @endDate
+	UNION ALL
+		SELECT 
+			ba.bookId,
+			ba.bookCustId,
+			c.custName,
+			c.custSurname,
+			ba.bookPackageId,
+			p.packTitle,
+			(SELECT cityName FROM tbl_city WHERE cityId = p.packCityId) AS destinationCity,
+			ba.bookPrice + ba.bookDiscountAmnt AS packagePrice,
+			ba.bookDiscountPercent,
+			ba.bookDiscountAmnt,
+			ba.bookPrice
+		FROM 
+			tbl_booking_archive ba
+		INNER JOIN 
+			tbl_customer c ON ba.bookCustId = c.custId
+		INNER JOIN 
+			tbl_package p ON ba.bookPackageId = p.packId
+		WHERE 
+			ba.bookCreatedAt BETWEEN @startDate AND @endDate
+			AND ba.wasRealized = 1;
 END;

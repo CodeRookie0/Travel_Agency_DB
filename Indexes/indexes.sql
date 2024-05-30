@@ -11,7 +11,7 @@ CREATE INDEX idx_address_addrCityId ON tbl_address (addrCityId);
 
 CREATE INDEX idx_customer_custAddrId ON tbl_customer (custAddrId);
 
-CREATE INDEX idx_guide_guideCityId ON tbl_guide (guideCityId);
+CREATE INDEX idx_representative_repCityId ON tbl_representative(repCityId);
 
 CREATE INDEX idx_hotel_hotAddrId ON tbl_hotel (hotAddrId);
 

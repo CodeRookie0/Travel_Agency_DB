@@ -15,7 +15,7 @@
 -- @TotalRevenue: The total revenue generated in the specified month and year.
 --
 -- Example Usage:
--- EXEC up_generate_revenue_report @month = 3, @year = 2024;
+-- EXEC up_generate_revenue_report @month = 5, @year = 2024;
 --
 -- Result of the action:
 -- Returns a revenue report for the specified month and year.
@@ -36,9 +36,9 @@ BEGIN
         YEAR(b.bookCreatedAt) AS BookedYear,
         CAST(SUM((((b.bookPrice + b.bookDiscountAmnt) / 115) * 15) - b.bookDiscountAmnt) AS DECIMAL(10, 2)) AS TotalRevenue
     FROM 
-        tbl_booking b
+        tbl_booking_archive b
     WHERE 
-        MONTH(b.bookCreatedAt) = @month AND YEAR(b.bookCreatedAt) = @year
+        MONTH(b.bookCreatedAt) = @month AND YEAR(b.bookCreatedAt) = @year AND wasRealized=1
     GROUP BY 
         MONTH(b.bookCreatedAt), YEAR(b.bookCreatedAt);
 END;

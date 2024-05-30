@@ -9,8 +9,7 @@
 -- AFTER INSERT, UPDATE, DELETE
 --
 -- Result of the action:
--- Audits the changes made to hotel records, printing the action performed (INSERT, UPDATE, DELETE) 
--- and the affected hotel and address details.
+-- Audits the changes made to hotel records, adding records to the tbl_hotel_archive table with an indication of the action performed (INSERT, UPDATE, DELETE) 
 ---------------------------------------------------------------
 
 USE TRAVEL_AGENCY
@@ -23,63 +22,50 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @Action NVARCHAR(10);
+    DECLARE @Action CHAR(1);
 
     IF EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'UPDATE';
+        SET @Action = 'U';
     END
     ELSE IF EXISTS (SELECT * FROM inserted)
     BEGIN
-        SET @Action = 'INSERT';
+        SET @Action = 'I';
     END
     ELSE IF EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'DELETE';
+        SET @Action = 'D';
     END
 
-    PRINT 'Action: ' + @Action;
-
-    IF @Action IN ('INSERT', 'UPDATE')
+    IF @Action IN ('I', 'U')
     BEGIN
-        DECLARE @hotName VARCHAR(50);
-        DECLARE @hotPricePerNight DECIMAL(10, 2);
-        DECLARE @hotTelephoneNo VARCHAR(20);
-        DECLARE @hotContactEmail VARCHAR(45);
-        DECLARE @hotStars INT;
-        DECLARE @cityId INT;
-        DECLARE @addrPostalCode VARCHAR(20);
-        DECLARE @addrRegion VARCHAR(100);
-        DECLARE @addrStreet VARCHAR(255);
-        DECLARE @addrHouseNo VARCHAR(10);
+        INSERT INTO tbl_hotel_archive (archiveAction, hotId, hotAddrId, hotName, hotPricePerNight, hotTelephoneNo, hotContactEmail, hotStars, archivedAt)
+        SELECT 
+            @Action,
+            hotId,
+            hotAddrId,
+            hotName,
+            hotPricePerNight,
+            hotTelephoneNo,
+            hotContactEmail,
+            hotStars,
+            GETDATE()
+        FROM inserted;
+    END
 
-        SELECT @hotName = hotName,
-               @hotPricePerNight = hotPricePerNight,
-               @hotTelephoneNo = hotTelephoneNo,
-               @hotContactEmail = hotContactEmail,
-               @hotStars = hotStars,
-               @cityId = a.addrCityId,
-               @addrPostalCode = a.addrPostalCode,
-               @addrRegion = a.addrRegion,
-               @addrStreet = a.addrStreet,
-               @addrHouseNo = a.addrHouseNo
-        FROM inserted i
-        INNER JOIN tbl_address a ON i.hotAddrId = a.addrId;
-
-        PRINT '';
-        PRINT '--------HOTEL--------';
-        PRINT 'hotName : ' + ISNULL(@hotName, '');
-        PRINT 'hotPricePerNight : ' + ISNULL(CONVERT(VARCHAR(20), @hotPricePerNight), '');
-        PRINT 'hotTelephoneNo : ' + ISNULL(@hotTelephoneNo, '');
-        PRINT 'hotContactEmail : ' + ISNULL(@hotContactEmail, '');
-        PRINT 'hotStars : ' + ISNULL(CONVERT(VARCHAR(10), @hotStars), '');
-        PRINT '';
-        PRINT '--------ADDRESS--------';
-        PRINT 'cityId : ' + ISNULL(CONVERT(VARCHAR(10), @cityId), '');
-        PRINT 'addrPostalCode : ' + ISNULL(@addrPostalCode, '');
-        PRINT 'addrRegion : ' + ISNULL(@addrRegion, '');
-        PRINT 'addrStreet : ' + ISNULL(@addrStreet, '');
-        PRINT 'addrHouseNo : ' + ISNULL(@addrHouseNo, '');
-        PRINT '';
+	IF @Action = 'D'
+    BEGIN
+        INSERT INTO tbl_hotel_archive (archiveAction, hotId, hotAddrId, hotName, hotPricePerNight, hotTelephoneNo, hotContactEmail, hotStars, archivedAt)
+        SELECT 
+            @Action,
+            hotId,
+            hotAddrId,
+            hotName,
+            hotPricePerNight,
+            hotTelephoneNo,
+            hotContactEmail,
+            hotStars,
+            GETDATE()
+        FROM deleted;
     END
 END;

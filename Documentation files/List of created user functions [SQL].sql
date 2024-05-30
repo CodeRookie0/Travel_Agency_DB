@@ -1,4 +1,6 @@
 -- This SQL query returns a list of user functions (and their details) in the database
+USE TRAVEL_AGENCY
+GO
 
 SELECT 
     ROUTINE_NAME,

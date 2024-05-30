@@ -15,7 +15,10 @@ CREATE TABLE tbl_package (
     packReturnFlightId INT,
     packOutboundBusRouteId INT,
     packReturnBusRouteId INT,
-    packGuideId INT NOT NULL,
+    packRepId INT NOT NULL,
+	packMinCapacity INT NOT NULL DEFAULT 10,
+    packMaxCapacity INT NOT NULL DEFAULT 40,
+    packCurrentBookings INT NOT NULL DEFAULT 0,
     CONSTRAINT chk_flight_or_busRoute 
         CHECK (
             (packOutboundFlightId IS NOT NULL AND packReturnFlightId IS NOT NULL) OR 
@@ -29,6 +32,6 @@ CREATE TABLE tbl_package (
     FOREIGN KEY (packReturnFlightId) REFERENCES tbl_flight(fliId),
     FOREIGN KEY (packOutboundBusRouteId) REFERENCES tbl_busroute(busRouteId),
     FOREIGN KEY (packReturnBusRouteId) REFERENCES tbl_busroute(busRouteId),
-    FOREIGN KEY (packGuideId) REFERENCES tbl_guide(guideId)
+    FOREIGN KEY (packRepId) REFERENCES tbl_representative(RepId)
 );
 GO

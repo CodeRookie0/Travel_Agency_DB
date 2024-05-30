@@ -17,7 +17,9 @@
 -- @packReturnFlightId: The updated return flight ID associated with the package (optional).
 -- @packOutboundBusRouteId: The updated outbound bus route ID associated with the package (optional).
 -- @packReturnBusRouteId: The updated return bus route ID associated with the package (optional).
--- @packGuideId: The updated guide ID associated with the package (optional).
+-- @packRepId: The updated representative ID associated with the package (optional).
+-- @packMaxCapacity: The updated maximum capacity of the package (optional).
+-- @packMinCapacity: The updated minimum capacity of the package (optional).
 --
 -- Output Parameters:
 -- None
@@ -42,7 +44,9 @@ CREATE OR ALTER PROCEDURE up_update_package
     @packReturnFlightId INT = NULL,
     @packOutboundBusRouteId INT = NULL,
     @packReturnBusRouteId INT = NULL,
-    @packGuideId INT = NULL
+    @packRepId INT = NULL,
+    @packMaxCapacity INT = NULL,
+    @packMinCapacity INT = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -86,25 +90,25 @@ BEGIN
 		RETURN;
 	END;
 	
-	SELECT @packGuideId=COALESCE(@packGuideId, packGuideId) FROM tbl_package WHERE packId=@packId;
+	SELECT @packRepId=COALESCE(@packRepId, packRepId) FROM tbl_package WHERE packId=@packId;
 
-    IF @packGuideId IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbl_guide WHERE guideId = @packGuideId)
+    IF @packRepId IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbl_representative WHERE repId = @packRepId)
     BEGIN
-        RAISERROR('The specified guide ID does not exist.', 16, 1);
+        RAISERROR('The specified representative ID does not exist.', 16, 1);
         RETURN;
     END;
 
-    IF @packGuideId IS NOT NULL AND @packCityId IS NOT NULL
+    IF @packRepId IS NOT NULL AND @packCityId IS NOT NULL
     BEGIN
 		SELECT @packCityId= COALESCE(@packCityId, packCityId) FROM tbl_package WHERE packId=@packId;
         IF EXISTS (
             SELECT 1
-            FROM tbl_guide AS G
-            INNER JOIN tbl_city AS C ON G.guideCityId = C.cityId
-            WHERE G.guideId = @packGuideId AND C.cityId <> @packCityId
+            FROM tbl_representative AS R
+            INNER JOIN tbl_city AS C ON R.repCityId = C.cityId
+            WHERE R.repId = @packRepId AND C.cityId <> @packCityId
         )
         BEGIN
-            RAISERROR('The city of the specified guide does not match the package city.', 16, 1);
+            RAISERROR('The city of the specified representative does not match the package city.', 16, 1);
             RETURN;
         END;
     END;
@@ -217,17 +221,47 @@ BEGIN
 		RETURN;
 	END;
 
+	DECLARE @packDuration TINYINT
+    DECLARE @packPrice FLOAT
+    DECLARE @packStartDate DATE
+    DECLARE @packEndDate DATE
+
+	IF @packOutboundFlightId IS NOT NULL
+        SELECT @packStartDate = fliEndTime FROM tbl_flight WHERE fliId = @packOutboundFlightId
+    ELSE IF @packOutboundBusRouteId IS NOT NULL
+        SELECT @packStartDate = busRouteEndTime FROM tbl_busroute WHERE busRouteId = @packOutboundBusRouteId
+
+    IF @packReturnFlightId IS NOT NULL
+        SELECT @packEndDate = fliStartTime FROM tbl_flight WHERE fliId = @packReturnFlightId
+    ELSE IF @packReturnBusRouteId IS NOT NULL
+        SELECT @packEndDate = busRouteStartTime FROM tbl_busroute WHERE busRouteId = @packReturnBusRouteId
+
+
+	SELECT @packDuration = DATEDIFF(DAY, @packStartDate, @packEndDate) + 1
+	SELECT @packPrice = 
+        (
+            (SELECT hotPricePerNight FROM tbl_hotel WHERE hotId = @packHotId) * @packDuration +
+            ISNULL((SELECT fliPrice FROM tbl_flight WHERE fliId = @packOutboundFlightId), 0) +
+            ISNULL((SELECT fliPrice FROM tbl_flight WHERE fliId = @packReturnFlightId), 0) +
+            ISNULL((SELECT busRoutePrice FROM tbl_busroute WHERE busRouteId = @packOutboundBusRouteId), 0) +
+            ISNULL((SELECT busRoutePrice FROM tbl_busroute WHERE busRouteId = @packReturnBusRouteId), 0)
+        ) * 1.15
+
     UPDATE tbl_package
     SET 
         packTitle = COALESCE(@packTitle, packTitle),
         packDescription = COALESCE(@packDescription, packDescription),
         packCityId = @packCityId,
         packHotId = @packHotId,
+		packDuration = COALESCE(@packDuration, packDuration),
+        packPrice = COALESCE(@packPrice, packPrice),
         packOutboundFlightId = @packOutboundFlightId,
         packReturnFlightId = @packReturnFlightId,
         packOutboundBusRouteId = @packOutboundBusRouteId,
         packReturnBusRouteId = @packReturnBusRouteId,
-        packGuideId = @packGuideId
+        packRepId = @packRepId,
+		packMaxCapacity = COALESCE(@packMaxCapacity, packMaxCapacity),
+        packMinCapacity = COALESCE(@packMinCapacity, packMinCapacity)
     WHERE packId = @packId;
 
 	PRINT 'Package data has been successfully modified.'

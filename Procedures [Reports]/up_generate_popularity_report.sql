@@ -8,7 +8,7 @@
 -- Output Parameters:
 -- @packId: The ID of the travel package.
 -- @packTitle: The title of the travel package.
--- @TotalBookings: The total number of bookings made for the travel package.
+-- @packCurrentBookings: The total number of bookings made for the travel package.
 --
 -- Example Usage:
 -- EXEC up_generate_popularity_report;
@@ -28,13 +28,9 @@ BEGIN
     SELECT 
         p.packId,
         p.packTitle,
-        COUNT(b.bookId) AS TotalBookings
+        p.packCurrentBookings
     FROM 
         tbl_package p
-    LEFT JOIN 
-        tbl_booking b ON p.packId = b.bookPackageId
-    GROUP BY 
-        p.packId, p.packTitle
     ORDER BY 
-        TotalBookings DESC;
+        p.packCurrentBookings DESC;
 END;

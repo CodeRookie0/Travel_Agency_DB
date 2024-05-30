@@ -9,8 +9,8 @@
 -- AFTER INSERT, UPDATE, DELETE
 --
 -- Result of the action:
--- Audits the changes made to customer records, printing the action performed (INSERT, UPDATE, DELETE) 
--- and the affected customer and address details.
+-- Audits the changes made to customer records, adding records to the tbl_customer_archive table with an indication of the action performed (INSERT, UPDATE, DELETE) 
+-- and including the affected customer details.
 ---------------------------------------------------------------
 
 USE TRAVEL_AGENCY
@@ -23,60 +23,48 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @Action NVARCHAR(10);
+    DECLARE @Action CHAR(1);
 	
     IF EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'UPDATE';
+        SET @Action = 'U';
     END
     ELSE IF EXISTS (SELECT * FROM inserted)
     BEGIN
-        SET @Action = 'INSERT';
+        SET @Action = 'I';
     END
     ELSE IF EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'DELETE';
+        SET @Action = 'D';
     END
 
-    PRINT 'Action: ' + @Action;
-
-    IF @Action IN ('INSERT', 'UPDATE')
+    IF @Action IN ('I', 'U')
     BEGIN
-        DECLARE @custName VARCHAR(50);
-        DECLARE @custSurname VARCHAR(50);
-        DECLARE @custPhone VARCHAR(20);
-        DECLARE @custEmailAddress VARCHAR(255);
-        DECLARE @cityId INT;
-        DECLARE @addrPostalCode VARCHAR(20);
-        DECLARE @addrRegion VARCHAR(100);
-        DECLARE @addrStreet VARCHAR(255);
-        DECLARE @addrHouseNo VARCHAR(10);
+        INSERT INTO tbl_customer_archive (archiveAction, custId, custName, custSurname, custPhone, custEmailAddress, custAddrId, archivedAt)
+        SELECT 
+            @Action,
+            custId,
+            custName,
+            custSurname,
+            custPhone,
+            custEmailAddress,
+            custAddrId,
+            GETDATE()
+        FROM inserted;
+    END
 
-        SELECT @custName = custName,
-               @custSurname = custSurname,
-               @custPhone = custPhone,
-               @custEmailAddress = custEmailAddress,
-               @cityId = a.addrCityId,
-               @addrPostalCode = a.addrPostalCode,
-               @addrRegion = a.addrRegion,
-               @addrStreet = a.addrStreet,
-               @addrHouseNo = a.addrHouseNo
-        FROM inserted i
-        INNER JOIN tbl_address a ON i.custAddrId = a.addrId;
-		
-        PRINT '';
-        PRINT '--------CUSTOMER--------';
-        PRINT 'custName : ' + ISNULL(@custName, '');
-        PRINT 'custSurname : ' + ISNULL(@custSurname, '');
-        PRINT 'custPhone : ' + ISNULL(@custPhone, '');
-        PRINT 'custEmailAddress : ' + ISNULL(@custEmailAddress, '');
-        PRINT '';
-        PRINT '--------ADDRESS--------';
-        PRINT 'cityId : ' + ISNULL(CONVERT(VARCHAR(10), @cityId), '');
-        PRINT 'addrPostalCode : ' + ISNULL(@addrPostalCode, '');
-        PRINT 'addrRegion : ' + ISNULL(@addrRegion, '');
-        PRINT 'addrStreet : ' + ISNULL(@addrStreet, '');
-        PRINT 'addrHouseNo : ' + ISNULL(@addrHouseNo, '');
-        PRINT '';
+	IF @Action = 'D'
+    BEGIN
+        INSERT INTO tbl_customer_archive (archiveAction, custId, custName, custSurname, custPhone, custEmailAddress, custAddrId, archivedAt)
+        SELECT 
+            @Action,
+            custId,
+            custName,
+            custSurname,
+            custPhone,
+            custEmailAddress,
+            custAddrId,
+            GETDATE()
+        FROM deleted;
     END
 END;

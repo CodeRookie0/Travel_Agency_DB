@@ -42,14 +42,32 @@ BEGIN
         RETURN;
     END;
 
+	IF (SELECT packCurrentBookings FROM tbl_package WHERE packId = @bookPackageId) = (SELECT packMaxCapacity FROM tbl_package WHERE packId = @bookPackageId)
+    BEGIN
+        RAISERROR('The maximum capacity for this package has been reached.', 16, 1);
+        RETURN;
+    END;
+
 	IF @bookDiscountPercent < 0 OR @bookDiscountPercent > 1
     BEGIN
         RAISERROR('The discount percentage must be between 0 and 1.', 16, 1);
         RETURN;
     END;
 
-    INSERT INTO tbl_booking(bookCustId, bookPackageId, bookDiscountPercent,bookPrice)
-    VALUES (@bookCustId, @bookPackageId, @bookDiscountPercent,1);
+	DECLARE @packPrice DECIMAL(10, 2)
+    DECLARE @bookDiscountAmnt DECIMAL(10, 2)
+    DECLARE @bookPrice DECIMAL(10, 2)
+
+	SELECT @packPrice = packPrice
+    FROM tbl_package
+    WHERE packId = @bookPackageId;
+
+    SET @bookDiscountAmnt = @packPrice * @bookDiscountPercent;
+
+    SET @bookPrice = @packPrice - @bookDiscountAmnt;
+
+    INSERT INTO tbl_booking(bookCustId, bookPackageId, bookDiscountPercent, bookDiscountAmnt, bookPrice)
+    VALUES (@bookCustId, @bookPackageId, @bookDiscountPercent, @bookDiscountAmnt, @bookPrice);
 
 	PRINT 'The booking has been successfully added.';
 END;

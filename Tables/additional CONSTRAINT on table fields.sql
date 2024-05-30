@@ -18,6 +18,15 @@ ADD CONSTRAINT chk_busroute_busRoutePrice CHECK (busRoutePrice > 0);
 ALTER TABLE tbl_package
 ADD CONSTRAINT chk_package_packPrice CHECK (packPrice > 0);
 
+ALTER TABLE tbl_package
+ADD CONSTRAINT chk_package_packMinCapacity CHECK (packMinCapacity > 0);
+
+ALTER TABLE tbl_package
+ADD CONSTRAINT chk_package_packMaxCapacity CHECK (packMaxCapacity > 5);
+
+ALTER TABLE tbl_package
+ADD CONSTRAINT chk_package_packCurrentBookings CHECK (packCurrentBookings >= 0 AND packCurrentBookings <= packMaxCapacity);
+
 ALTER TABLE tbl_booking
 ADD CONSTRAINT chk_booking_bookDiscountPercent CHECK (bookDiscountPercent >= 0);
 

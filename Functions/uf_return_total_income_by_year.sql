@@ -2,7 +2,7 @@
 --- FUNCTION DEFINITION
 --- uf_return_total_income_by_year
 ---------------------------------------------------------------
--- This function calculates the total income generated in a specific year by summing up the net income (total booking price after deducting discounts and taxes) of all bookings made in that year.
+-- This function calculates the total income generated in a specific year by summing up the net income (total booking price after deducting discounts and taxes) of all bookings realized in that year.
 --
 -- Input Parameters:
 -- - @Year: The year for which the total income is to be calculated.
@@ -11,7 +11,7 @@
 -- - @TotalIncome : The total income generated in the specified year
 --
 -- Example Usage:
--- SELECT dbo.uf_return_total_income_by_year(2023);
+-- SELECT dbo.uf_return_total_income_by_year(2024);
 --
 -- Result of the action:
 -- Returns the total income generated in the specified year as DECIMAL(10, 2).
@@ -30,8 +30,9 @@ BEGIN
     DECLARE @TotalIncome DECIMAL(10, 2);
 
     SELECT @TotalIncome = SUM((((bookPrice + bookDiscountAmnt) / 115) * 15) - bookDiscountAmnt)
-    FROM tbl_booking
-    WHERE YEAR(bookCreatedAt) = @Year;
+    FROM tbl_booking_archive
+    WHERE YEAR(bookCreatedAt) = @Year
+	AND wasRealized=1;
 
     RETURN @TotalIncome;
 END;

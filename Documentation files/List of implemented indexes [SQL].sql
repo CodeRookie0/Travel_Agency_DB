@@ -2,6 +2,8 @@
 This script returns a list of indexes with their type 
 and the name of the table for which it was created
 */
+USE TRAVEL_AGENCY
+GO
 
 SELECT
     t.name AS TableName,

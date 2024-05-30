@@ -25,10 +25,10 @@
 -- @hotelStars: The star rating of the hotel associated with the travel package.
 --
 -- Example Usage:
--- EXEC up_search_travel_packages @destinationCityId = 123, @startDate = '2024-04-01', @endDate = '2024-04-10', @maxPrice = 2000.00, @preferredTransport = 'flight';
+-- EXEC up_search_travel_packages @destinationCityId = 260, @startDate = '2024-06-12', @endDate = '2024-06-27', @maxPrice = 2200.00, @preferredTransport = 'bus';
 --
 -- Result of the action:
--- Returns travel packages that match the specified criteria.
+-- Returns travel packages that match the specified criteria and possible to book.
 --------------------------------------------------------------------------------------------------
 
 USE TRAVEL_AGENCY
@@ -66,5 +66,6 @@ BEGIN
             (@preferredTransport = 'flight' AND packOutboundFlightId IS NOT NULL AND packReturnFlightId IS NOT NULL) OR
             (@preferredTransport = 'bus' AND packOutboundBusRouteId IS NOT NULL AND packReturnBusRouteId IS NOT NULL) OR
             (@preferredTransport IS NULL OR @preferredTransport NOT IN ('flight', 'bus'))
-        );
+        )
+		AND packMaxCapacity>packCurrentBookings;
 END;

@@ -9,8 +9,8 @@
 -- AFTER INSERT, UPDATE, DELETE
 --
 -- Result of the action:
--- Audits the changes made to address records, printing the action performed (INSERT, UPDATE, DELETE) 
--- and the affected address details.
+-- Audits the changes made to address records, adding records to the tbl_address_archive table with an indication of the action performed (INSERT, UPDATE, DELETE) 
+-- and including the affected address details.
 ---------------------------------------------------------------
 
 USE TRAVEL_AGENCY
@@ -23,45 +23,48 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @Action NVARCHAR(10);
+    DECLARE @Action CHAR(1);
 
     IF EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'UPDATE';
+        SET @Action = 'U';
     END
     ELSE IF EXISTS (SELECT * FROM inserted)
     BEGIN
-        SET @Action = 'INSERT';
+        SET @Action = 'I';
     END
     ELSE IF EXISTS (SELECT * FROM deleted)
     BEGIN
-        SET @Action = 'DELETE';
+        SET @Action = 'D';
     END
 
-    PRINT 'Action: ' + @Action;
-
-    IF @Action IN ('INSERT', 'UPDATE')
+    IF @Action IN ('I', 'U')
     BEGIN
-        DECLARE @addrCityId INT;
-        DECLARE @addrPostalCode VARCHAR(20);
-        DECLARE @addrRegion VARCHAR(100);
-        DECLARE @addrStreet VARCHAR(255);
-        DECLARE @addrHouseNo VARCHAR(10);
+        INSERT INTO tbl_address_archive (archiveAction, addrId, addrCityId, addrPostalCode, addrRegion, addrStreet, addrHouseNo, archivedAt)
+        SELECT 
+            @Action,
+            addrId,
+            addrCityId,
+            addrPostalCode,
+            addrRegion,
+            addrStreet,
+            addrHouseNo,
+            GETDATE()
+        FROM inserted;
+    END
 
-        SELECT @addrCityId = addrCityId,
-               @addrPostalCode = addrPostalCode,
-               @addrRegion = addrRegion,
-               @addrStreet = addrStreet,
-               @addrHouseNo = addrHouseNo
-        FROM inserted i;
-
-        PRINT '';
-        PRINT '--------ADDRESS--------';
-        PRINT 'addrCityId : ' + ISNULL(CONVERT(VARCHAR(10), @addrCityId), '');
-        PRINT 'addrPostalCode : ' + ISNULL(@addrPostalCode, '');
-        PRINT 'addrRegion : ' + ISNULL(@addrRegion, '');
-        PRINT 'addrStreet : ' + ISNULL(@addrStreet, '');
-        PRINT 'addrHouseNo : ' + ISNULL(@addrHouseNo, '');
-        PRINT '';
+	IF @Action = 'D'
+    BEGIN
+        INSERT INTO tbl_address_archive (archiveAction, addrId, addrCityId, addrPostalCode, addrRegion, addrStreet, addrHouseNo, archivedAt)
+        SELECT 
+            @Action,
+            addrId,
+            addrCityId,
+            addrPostalCode,
+            addrRegion,
+            addrStreet,
+            addrHouseNo,
+            GETDATE()
+        FROM deleted;
     END
 END;

@@ -3,7 +3,7 @@
 --- up_add_package
 --------------------------------------------------------------------------------------------------
 -- This procedure is used to add a new package to the database.
--- It ensures consistency between the package details and the associated entities, such as verifying that the hotel and guide are in the same city as the package.
+-- It ensures consistency between the package details and the associated entities, such as verifying that the hotel and representative are in the same city as the package.
 -- The procedure also checks for the existence of outbound and return flights or bus routes, requiring both to be specified.
 -- Additionally, it calculates the start and end dates of the package based on the provided flights or bus routes and verifies that the duration is between 3 and 30 days.
 --
@@ -16,14 +16,17 @@
 -- @packReturnFlightId: The ID of the return flight associated with the package (optional).
 -- @packOutboundBusRouteId: The ID of the outbound bus route associated with the package (optional).
 -- @packReturnBusRouteId: The ID of the return bus route associated with the package (optional).
--- @packGuideId: The ID of the guide associated with the package (required).
+-- @packRepId: The ID of the representative associated with the package (required).
+-- @packMaxCapacity: The maximum capacity of the package (optional, default = 40).
+-- @packMinCapacity: The minimum capacity of the package (optional, default = 10).
 --
 -- Output Parameters:
 -- None
 --
 -- Example Usage:
 -- EXEC up_add_package @packTitle = 'Summer Vacation', @packDescription = 'Enjoy a relaxing summer vacation by the beach.', 
---                     @packCityId = 1, @packHotId = 101, @packOutboundFlightId = 201, @packReturnFlightId = 202, @packGuideId = 301;
+--                     @packCityId = 2, @packHotId = 4, @packOutboundFlightId = 201, @packReturnFlightId = 202, @packRepId = 2,
+--                     @packMaxCapacity = 70, @packMinCapacity = 25;
 --
 -- Result of the action:
 -- The package has been successfully added.
@@ -41,7 +44,9 @@ CREATE OR ALTER PROCEDURE up_add_package
     @packReturnFlightId INT = NULL,
     @packOutboundBusRouteId INT = NULL,
     @packReturnBusRouteId INT = NULL,
-    @packGuideId INT
+    @packRepId INT,
+    @packMaxCapacity INT = NULL,
+    @packMinCapacity INT = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -75,20 +80,20 @@ BEGIN
         RETURN;
     END;
 
-    IF NOT EXISTS (SELECT 1 FROM tbl_guide WHERE guideId = @packGuideId)
+    IF NOT EXISTS (SELECT 1 FROM tbl_representative WHERE repId = @packRepId)
     BEGIN
-        RAISERROR('The specified guide ID does not exist.', 16, 1);
+        RAISERROR('The specified representative ID does not exist.', 16, 1);
         RETURN;
     END;
 
     IF EXISTS (
         SELECT 1
-        FROM tbl_guide AS G
-        INNER JOIN tbl_city AS C ON G.guideCityId = C.cityId
-        WHERE G.guideId = @packGuideId AND C.cityId <> @packCityId
+        FROM tbl_representative AS R
+        INNER JOIN tbl_city AS C ON R.repCityId = C.cityId
+        WHERE R.repId = @packRepId AND C.cityId <> @packCityId
     )
     BEGIN
-        RAISERROR('The city of the specified guide does not match the package city.', 16, 1);
+        RAISERROR('The city of the specified representative does not match the package city.', 16, 1);
         RETURN;
     END;
 
@@ -160,8 +165,43 @@ BEGIN
         RETURN;
     END;
 
-    INSERT INTO tbl_package(packTitle, packDescription, packCityId, packHotId, packOutboundFlightId, packReturnFlightId, packOutboundBusRouteId, packReturnBusRouteId, packGuideId)
-    VALUES (@packTitle, @packDescription, @packCityId, @packHotId, @packOutboundFlightId, @packReturnFlightId, @packOutboundBusRouteId, @packReturnBusRouteId, @packGuideId);
+	 IF @packMaxCapacity IS NOT NULL AND @packMaxCapacity <= 5
+    BEGIN
+        RAISERROR('Max capacity must be greater than 5.', 16, 1);
+        RETURN;
+    END;
+
+    IF @packMinCapacity IS NOT NULL AND @packMinCapacity <= 0
+    BEGIN
+        RAISERROR('Min capacity must be greater than 0.', 16, 1);
+        RETURN;
+    END;
+
+	IF @packMaxCapacity IS NULL
+	BEGIN
+		SET @packMaxCapacity = 40;
+	END;
+
+	IF @packMinCapacity IS NULL
+	BEGIN
+		SET @packMinCapacity = 10;
+	END;
+	
+    DECLARE @packDuration TINYINT
+    DECLARE @packPrice FLOAT
+
+	SELECT @packDuration = DATEDIFF(DAY, @packStartDate, @packEndDate) + 1
+	SELECT @packPrice = 
+        (
+            (SELECT hotPricePerNight FROM tbl_hotel WHERE hotId = @packHotId) * @packDuration +
+            ISNULL((SELECT fliPrice FROM tbl_flight WHERE fliId = @packOutboundFlightId), 0) +
+            ISNULL((SELECT fliPrice FROM tbl_flight WHERE fliId = @packReturnFlightId), 0) +
+            ISNULL((SELECT busRoutePrice FROM tbl_busroute WHERE busRouteId = @packOutboundBusRouteId), 0) +
+            ISNULL((SELECT busRoutePrice FROM tbl_busroute WHERE busRouteId = @packReturnBusRouteId), 0)
+        ) * 1.15
+
+    INSERT INTO tbl_package(packTitle, packDescription, packCityId, packHotId, packDuration, packPrice, packOutboundFlightId, packReturnFlightId, packOutboundBusRouteId, packReturnBusRouteId, packRepId, packMaxCapacity, packMinCapacity)
+    VALUES (@packTitle, @packDescription, @packCityId, @packHotId, @packDuration, @packPrice, @packOutboundFlightId, @packReturnFlightId, @packOutboundBusRouteId, @packReturnBusRouteId, @packRepId, @packMaxCapacity, @packMinCapacity);
 
     PRINT 'The package has been successfully added.';
 END;

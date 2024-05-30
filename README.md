@@ -19,7 +19,7 @@ The "Travel Agency" database is a key tool in organizing customer travel by a tr
 * ![MS SQL Server](https://img.shields.io/badge/-MS%20SQL%20Server-CC2927?style=flat&logo=microsoft-sql-server&logoColor=white)
 
 ## ER Diagram:
-![ER Diagram](./Documentation%20files/ER%20Diagram%20for%20DB_2%20%5B.png%5D.png)
+![ER Diagram](./Documentation%20files/ER%20Diagram%20for%20DB%20%5B.png%5D.png)
 
 ## Functional requirements
 ### :world_map: Trip data management:

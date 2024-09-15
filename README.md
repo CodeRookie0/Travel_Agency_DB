@@ -1,4 +1,4 @@
-# Travel-Agency-DB
+# Travel_Agency_DB
 Welcome to the Travel Agency Database! This project is designed to facilitate travel management processes for a travel agency, providing comprehensive tools for planning, booking, and monitoring trips.
 # Table of Content
 * [General info](#general-info)
